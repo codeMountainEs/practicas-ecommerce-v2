@@ -188,8 +188,9 @@ class OrderResource extends Resource
                     ->options(OrderStatus::class),
             ])
             ->actions([ // Acciones sobre la línea correspondiente.
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()->slideOver(),
+
+                Tables\Actions\DeleteAction::make()->slideOver(),
                 ])
             ->bulkActions([ // Acciones masivas sobre líneas seleccionadas.
                 Tables\Actions\BulkActionGroup::make([
@@ -197,7 +198,7 @@ class OrderResource extends Resource
                 ]),
             ])
             ->emptyStateActions([
-                Tables\Actions\CreateAction::make(),
+                Tables\Actions\CreateAction::make()->slideOver(),
             ])
             ->emptyStateDescription(__('No hay pedidos actualmente'));
     }
